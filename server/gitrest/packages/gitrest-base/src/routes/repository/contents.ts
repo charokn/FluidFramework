@@ -29,6 +29,7 @@ export function create(
 		const resultP = repoManagerFactory
 			.open(repoManagerParams)
 			.then(async (repoManager) => {
+				console.log({message:"repo manager created successfully",repoManagerParams, repoManager, request, response, next,time:new Date().toISOString()})
 				const fileSystemManagerFactory = getFilesystemManagerFactory(
 					fileSystemManagerFactories,
 					repoManagerParams.isEphemeralContainer,
@@ -50,7 +51,7 @@ export function create(
 				}else if(error.message == "Request failed"){
 					console.log('CEDIT_LOGS_GITREST_2 -> contents.ts : Request failed: ', error);
 				}
-				 logAndThrowApiError(error, request, repoManagerParams)});
+				return logAndThrowApiError(error, request, repoManagerParams)});
 		handleResponse(resultP, response);
 	});
 

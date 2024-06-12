@@ -278,6 +278,7 @@ export async function getRepoManagerFromWriteAPI(
 	repoPerDocEnabled: boolean,
 	optimizeForInitialSummary?: boolean,
 ) {
+	console.log('CEDIT_LOGS_GITREST_3 -> helpers: getRepoManagerFromWriteAPI : repoManagerParams : ', {repoManagerParams, repoPerDocEnabled, optimizeForInitialSummary});
 	if (optimizeForInitialSummary) {
 		return repoManagerFactory.create({ ...repoManagerParams, optimizeForInitialSummary });
 	}
