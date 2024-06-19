@@ -108,6 +108,12 @@ export abstract class RepositoryManagerFactoryBase<TRepo> implements IRepository
 				...lumberjackBaseProperties,
 				[BaseGitRestTelemetryProperties.directoryPath]: gitdir,
 			});
+			try{
+
+				Error.stackTraceLimit = Infinity;
+				}catch(err){
+					console.log("Unable to modify stack trace limit",err)
+				}
 			// services-client/getOrCreateRepository depends on a 400 response code
 			throw new NetworkError(400, `Repo does not exist ${gitdir}`);
 		};

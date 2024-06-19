@@ -278,7 +278,6 @@ export async function getRepoManagerFromWriteAPI(
 	repoPerDocEnabled: boolean,
 	optimizeForInitialSummary?: boolean,
 ) {
-	console.log('CEDIT_LOGS_GITREST_3 -> helpers: getRepoManagerFromWriteAPI : repoManagerParams : ', {repoManagerParams, repoPerDocEnabled, optimizeForInitialSummary});
 	if (optimizeForInitialSummary) {
 		return repoManagerFactory.create({ ...repoManagerParams, optimizeForInitialSummary });
 	}
@@ -294,6 +293,7 @@ export async function getRepoManagerFromWriteAPI(
 			error?.name === "NetworkError" &&
 			(error as NetworkError)?.code === 400
 		) {
+			
 			console.log('CEDIT_LOGS_GITREST_4 -> helpers: getRepoManagerFromWriteAPI : NetworkError : ', error);
 			return repoManagerFactory.create(repoManagerParams);
 		}
