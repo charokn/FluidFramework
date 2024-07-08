@@ -527,6 +527,7 @@ export class ScribeLambda implements IPartitionLambda {
 			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 			const message = this.pendingMessages.shift()!;
 			try {
+				throw new Error("Test Corrupt Document");
 				if (
 					message.contents &&
 					typeof message.contents === "string" &&
@@ -540,6 +541,10 @@ export class ScribeLambda implements IPartitionLambda {
 				}
 			} catch (error) {
 				// We should mark the document as corrupt here
+				console.log(`Error processing message ${error}`);
+				console.log('isCorrupt', this.isDocumentCorrupt);
+				
+				
 				this.markDocumentAsCorrupt(queuedMessage);
 				this.context.log?.error(`Protocol error ${error}`, {
 					messageMetaData: {
