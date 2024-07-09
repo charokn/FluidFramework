@@ -128,7 +128,7 @@ export class ScribeLambdaFactory
 				(error) => true /* shouldRetry */,
 			)) as IDocument;
 			console.log("CEDIT: document in scribe lambda ****: ", document);
-			
+			document = null as unknown as IDocument;
 			if (JSON.parse(document.scribe)?.isCorrupt) {
 				Lumberjack.info(
 					`Received attempt to connect to a corrupted document.`,
