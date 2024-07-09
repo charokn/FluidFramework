@@ -519,7 +519,7 @@ export class ScribeLambda implements IPartitionLambda {
 	// is crucial and the document is essentially corrupted at this point. We should start logging this and
 	// have a better understanding of all failure modes.
 	private processFromPending(target: number, queuedMessage: IQueuedMessage) {
-		console.log('InProcessFromPending ***********');
+		console.log('CEDIT: InProcessFromPending ***********');
 		
 		while (
 			this.pendingMessages.length > 0 &&
@@ -529,7 +529,7 @@ export class ScribeLambda implements IPartitionLambda {
 			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 			const message = this.pendingMessages.shift()!;
 			try {
-				throw new Error("Test Corrupt Document");
+				throw new Error("CEDIT: Test Corrupt Document");
 				if (
 					message.contents &&
 					typeof message.contents === "string" &&
@@ -543,8 +543,8 @@ export class ScribeLambda implements IPartitionLambda {
 				}
 			} catch (error) {
 				// We should mark the document as corrupt here
-				console.log(`Error processing message ${error}`);
-				console.log('isCorrupt', this.isDocumentCorrupt);
+				console.log(`CEDIT: Error processing message ${error}`);
+				console.log('CEDIT: isCorrupt', this.isDocumentCorrupt);
 				
 				
 				this.markDocumentAsCorrupt(queuedMessage);
