@@ -529,7 +529,7 @@ export class ScribeLambda implements IPartitionLambda {
 			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 			const message = this.pendingMessages.shift()!;
 			try {
-				throw new Error("CEDIT: Test Corrupt Document");
+				// throw new Error("CEDIT: Test Corrupt Document");
 				if (
 					message.contents &&
 					typeof message.contents === "string" &&

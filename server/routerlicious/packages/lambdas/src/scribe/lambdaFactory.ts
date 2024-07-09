@@ -116,6 +116,8 @@ export class ScribeLambdaFactory
 		const lumberProperties = getLumberBaseProperties(documentId, tenantId);
 
 		try {
+			console.log("CEDIT: Retriving Document from dynamodb for: ", documentId);
+			
 			document = (await runWithRetry(
 				async () => this.documentRepository.readOne({ documentId, tenantId }),
 				"readIDocumentInScribeLambdaFactory",
