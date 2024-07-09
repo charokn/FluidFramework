@@ -519,6 +519,8 @@ export class ScribeLambda implements IPartitionLambda {
 	// is crucial and the document is essentially corrupted at this point. We should start logging this and
 	// have a better understanding of all failure modes.
 	private processFromPending(target: number, queuedMessage: IQueuedMessage) {
+		console.log('InProcessFromPending ***********');
+		
 		while (
 			this.pendingMessages.length > 0 &&
 			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
